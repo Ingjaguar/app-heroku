@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+<!--VISTA EN FORMA DE TABLA -->
+        <div class="px-4 py-5 text-center">
+            <h1 class="display-5 fw-bold mb-4">Lista Personas</h1>
+            <a href="/personal/nueva" class="btn btn-primary">Crear Persona</a>
+        </div>
+        <div class="d-flex gap-4 justify-content-center">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="table table-striped">
+                    <tr th:each="persona : ${personas}">
+                        <th scope="row" th:text="${persona.id}">ID</th>
+                        <td th:text="${persona.nombre}">Nombre</td>
+                        <td th:text="${persona.apellido}">Apellido</td>
+                        <td th:text="${persona.email}">Email</td>
+                        <td th:text="${persona.telefono}">Telefono</td>
+                        <td><a th:href="@{/personal/eliminar/} + ${persona.id}" th:text="Eliminar" class="btn btn-outline-danger"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
